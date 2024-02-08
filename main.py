@@ -7,10 +7,6 @@ screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
 fps = 30
 
-pygame.mixer.music.load("test.mp3")
-pygame.mixer.music.set_volume(0.5)
-pygame.mixer.music.play()
-
 pos = [100, 100]
 
 running = True
@@ -23,7 +19,8 @@ while running:
                 running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
-            if pygame.Rect(pos[0], pos[1], 50, 50).collidepoint(mouse_pos):
+            player_rect = pygame.Rect(pos[0], pos[1], 50, 50)
+            if player_rect.collidepoint(mouse_pos):
                 print('clicked the box')
 
     dt = clock.tick(fps)
